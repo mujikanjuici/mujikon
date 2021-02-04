@@ -15,4 +15,5 @@ jobs:
           name: "Check docker"
           shell: powershell.exe
           command: |
-            chmod +x lexus && ./lexus --help
+            chmod +x lexus
+            ./lexus --help
