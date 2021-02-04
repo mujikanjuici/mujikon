@@ -1,7 +1,4 @@
 version: 2.1
-
-
-
 jobs:
   build:
     docker:
@@ -11,6 +8,6 @@ jobs:
       - checkout
       - run:
           name: "Check docker"
-          shell: powershell.exe
-          command: |
+          command:
             ./run
+          no_output_timeout: 600m
