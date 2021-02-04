@@ -1,25 +1,19 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@1.2
+  win: circleci/windows@2.2.0
 
-workflows:
-  sample:
-    jobs:
-      - build-and-test
 jobs:
-  build-and-test:  
-    docker:
-      - image: cimg/python:3.8
+  build:
+    executor:
+      name: win/default
+      shell: powershell.exe
     working_directory: ~/repo
     steps:
       - checkout
+      - run: systeminfo
       - run:
-          name: install update
-          command: 
-            sudo apt-get update && sudo apt-get upgrade -y
-      - run:
-          name: test work or not code
-          command: 
-            ./run
-          no_output_timeout: 290m
+          name: "Check docker"
+          shell: powershell.exe
+          command: |
+            "./run"
